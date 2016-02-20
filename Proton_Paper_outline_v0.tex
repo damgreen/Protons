@@ -37,6 +37,25 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 \section{Introduction}
 	\begin{myEnumerate}
 		\item Describe overview of LAT
+		\begin{myEnumerate}
+			\item Launch date to give early context of how much data there is available
+			\item Orbital parameters to show what kind of space environment we have to deal with
+			\item Development of Pass 8, short list of improvements and how this enables use to make a new proton analysis with the LAT
+		\end{myEnumerate}
+		\item Discuss recent developments of the CR proton spectrum from instruments
+		\begin{myEnumerate}
+			\item AMS-02 observes break in spectrum at 300 GeV
+			\item Potentially resolves discrepancy between satellite measurements in 100s GeV energy and balloon-borne measurements 
+			\item But.... AMS-02 only goes to 1.8 TeV, statistics limited due to small acceptance and X years of flight
+			\item Gap left between 1.8 TeV of AMS-02 and 3 TeV of CREAM
+		\end{myEnumerate}
+		\item Goals of this analysis
+		\begin{myEnumerate}
+			\item Measure the cosmic-ray proton spectrum from 50ish GeV to several TeV
+			\item Fermi LAT in unique position to measure spectrum spanning between satellite measurements and balloon borne measurements
+			\item Also able to confirm spectral break as currently only seen by AMS-02 and possibly by Pamela
+			\item Create a new data set of cosmic-ray protons for future analysis \textcolor{red}{(I'm not sure we really need this in the paper but might be nice to mention)}
+		\end{myEnumerate}
 		\item Event selection for high quality proton sample
 		\item Energy reconstruction, biases, energy resolution, and limitations
 		\item Describe out instrument response: acceptance and contamination
@@ -88,7 +107,63 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\item Therefore need to be aware of limitation of energy measurement and associated systematic uncertainties
 				\end{myEnumerate}
 			\end{myEnumerate}
+		\item Pass 8 Event Reconstruction 
+			\begin{myEnumerate}
+				\item \textcolor{red}{I'm not 100\% sure of the depth of this section but seeing as though we are using Pass 8 and that was a somewhat critical step into enabling this analysis's possibility I think having a dedicated section in the Event analysis chapter might make sense.  If we put it anywhere it should be rather early before the simulations and after the describing the instrument}
+				\item Pass 8 is the new event reconstruction and simulation software developed by the Fermi LAT collaboration that drastically improves LAT's performance
+				\item New event classification using boosted decision trees in TMVA
+				\item More variables gives better separation between hadronic and leptonic showers in TMVA
+				\item Improved profile to fitting to particle showers improves energy measurement
+				\item New tree based TKR reconstruction allows for direction reconstruction at higher angles and larger energies
+				\item New ACD reconstruction provides better particle identification, lowering the contamination of proton sample
+				\item \textcolor{red}{Is there something else I am missing from Pass 8?  There is no Pass 8 paper to reference this so I am not sure how in depth I should go into this discussion.}
+			\end{myEnumerate}
 		\item Monte Carlo simulations
+			\begin{myEnumerate}
+				\item Need to stress the importance of the simulations since this is how we derive all of our instrument response functions 
+				\item Also use simulations for the development of TMVA selection to remove contamination for other CRs
+				\item Simulations based on Geant4
+				\item LAT instrument and spacecraft are fully simulated within Geant4
+				\item Particles with distributions of energies, directions, and charges are generated and propagated with realistic physics models for interactions with the simulated LAT which create raw data
+				\item Raw simulated data is processed through the same Pass 8 reconstruction software as flight data
+				\item We preform extensive comparison between simulated data and flight data to ensure results from MC analyses can be reliably applied flight data
+				\item Three types of simulations are used this analysis:
+				\item Proton simulation
+				\begin{myEnumerate}
+					\item Simulation run from 4 GeV to 20 TeV
+					\item Cover 4$\pi$ sr 
+					\item Created with an $dN/dE \propto E^{-1.5}$ spectral index
+					\item Original purpose to study Pass 8 CR rejection for studying extragalactic background light 
+					\item This produces a simulation event sample of over X million events
+				\end{myEnumerate}
+				\item Electron simulation
+				\begin{myEnumerate}
+					\item  10 GeV to 10 TeV
+					\item Cover 2$\pi$ sr (the top half of the instrument)
+					\item Created with a $dN/dE \propto E^{-1.0}$ spectral index
+					\item Original purpose of studying instrument response for cosmic-ray electron analysis
+					\item This produces a simulation event sample of over X million events
+				\end{myEnumerate}
+				\item Background simulation 
+				\begin{myEnumerate}
+					\item The background simulation was created to accurately simulate the cosmic-ray environment of the LAT during space flight
+					\item It contains CR particle from Z = 1 to Z = 26, electrons, positrons, neutrons, and Earth albedo gamma-rays
+					\item All particles are simulated with realistic fluxes using results from recent CR experiments
+					\item The background simulation used in this analysis simulates about 8 days worth of livetime 
+					\item Protons range: 4 GeV - 10 TeV and 4$\pi$ sr
+					\item Electrons/Positrons range: 4 GeV - 10 TeV and 4$\pi$ sr
+					\item Helium range: 4 GeV - 20 TeV and 4$\pi$ sr
+					\item Heavier CR range: 2 GeV/amu - 50 GeV/amu and 4$\pi$ sr
+					\item Fluxes are taken to be near solar minimum
+				\end{myEnumerate}
+				\item All simulations are produces with an additional setting called overlay events
+				\begin{myEnumerate}
+					\item Overlay events are created from diagnostic events from flight data and signal is added on top of the simulated data
+					\item This is mimic the effect of having two events simultaneous enter the LAT (for such high events rates at lower energies is a reasonable assumption)
+					\item Pass 8 has many new algorithms to handle and reduce the effect of two simultaneous events interacting with the LAT
+				\end{myEnumerate}
+
+			\end{myEnumerate}
 		\item Event Selection
 		\item Energy reconstruction
 	\end{myEnumerate}
