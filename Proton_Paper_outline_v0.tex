@@ -2,6 +2,8 @@
 \usepackage[margin=1.0in]{geometry}
 \usepackage{outlines}
 \usepackage{lineno}
+\usepackage{color}
+
 \linenumbers
 \usepackage{enumitem}
 \setlistdepth{8}
@@ -34,12 +36,58 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 
 \section{Introduction}
 	\begin{myEnumerate}
-		\item 
+		\item Describe overview of LAT
+		\item Event selection for high quality proton sample
+		\item Energy reconstruction, biases, energy resolution, and limitations
+		\item Describe out instrument response: acceptance and contamination
+		\item Describe the methods used for spectral reconstruction: unfolding and forward folding using response matrix derived from MCs
+		\item Describe evaluation of systematic uncertainties
+		\begin{myEnumerate}
+			\item Due to event selection: acceptance and contamination
+			\item Energy measurement: absolute energy scale and energy resolution
+			\item From hadronic model of Geant4 simulations
+			\item Spectral reconstruction: comparing unfolding and forward folding methods
+		\end{myEnumerate}
+		\item Finally discuss observations and features of measured spectral, including possible spectral break and agreement with recent results \textcolor{red}{(definitely need to but this in context with other measurements since while energy resolution is poor and systematics less precises than AMS-02 we can extend the energy further into the region of balloon-borne detectors which have never been done before and makes a quantitative connection between two different observation environments)}
 	\end{myEnumerate}
 
 \section{Event Analysis}
 	\begin{myEnumerate}
 		\item Overview
+			\begin{myEnumerate}
+				\item Description of the LAT
+				\item 4$\times$4 array of towers which measure direction and energy of incoming cosmic-ray
+				\item Each tower is composed of TKR and CAL
+				\item TKR information
+				\begin{myEnumerate}
+					\item Each TKR module is 18 x-y planes of silicon-strip detectors with tungsten converter foil
+					\item Total of 1.5 $X_0$ at normal incidence (should convert this to nuclear interaction length)
+					\item X-Y nature and depth of TKR allows for determination of initial direction of cosmic-ray
+					\item Additionally able to measure the time over threshold of CR
+					\item ToT allows for measurement of signal $\propto$ Z$^2$
+				\end{myEnumerate}
+				\item CAL information
+				\begin{myEnumerate}
+					\item CAL is homogeneous electromagnetic calorimeter
+					\item Each CAL module is 96 CsI(Tl) crystals in an hodoscopic array in 8 layers.
+					\item The hodoscopic nature of the CAL allows for measuring the shape and evolution of each particle shower which can be used with a profile fitter to determine the incident energy of the cosmic-ray
+					\item At normal incidence the CAL is 0.5 $\lambda_i$ lengths deep but at horizontal incidence is it 1.5 $\lambda_i$ deep
+				\end{myEnumerate}
+				\item Anti-coincidence detector (ACD) surrounds the 4$\times$4 tower array
+				\item ACD information
+				\begin{myEnumerate}
+					\item 89 segmented covering 5 sides of the tower array
+					\item Each tile independently measures deposited energy from CR
+					\item Deposited energy $\propto$ Z$^2$ 
+				\end{myEnumerate}
+				\item LAT was not designed for accurate measurement of hadronic showers
+				\begin{myEnumerate}
+					\item Very shallow homogeneous calorimeter not idea for fully capturing energy hadronic shower profile
+					\item Compare to CREAM and/or AMS-02 
+					\item Unable to measure energy on an event by event basis, need to focus on a statistical ensemble approach with high event rate
+					\item Therefore need to be aware of limitation of energy measurement and associated systematic uncertainties
+				\end{myEnumerate}
+			\end{myEnumerate}
 		\item Monte Carlo simulations
 		\item Event Selection
 		\item Energy reconstruction
@@ -49,8 +97,8 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 	\begin{myEnumerate}
 		\item Instrument Acceptance
 		\item Residual Contamination
-		\item Spectral Reconsctrution
-		\item Systematic Uncertanties
+		\item Spectral Reconstruction
+		\item Systematic Uncertainties
 	\end{myEnumerate}
 \section{Results and Discussion}
 
