@@ -4,6 +4,7 @@
 \usepackage{lineno}
 \usepackage{color}
 \usepackage{amsmath,accents}
+\usepackage{mathrsfs}
 
 \linenumbers
 \usepackage{enumitem}
@@ -186,6 +187,7 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\item CalTrackAngle $<$ 0.3: Ensure the difference between the CAL and TKR directions is small.
 					\item CalNewCfpSat: Ensure that the variables resulting new full profile fitter are not saturated
 					\item Tkr1LengthInCal $>$ 200.0: Want a long path length through the calorimeter and does not fall within gaps of CAL.  More active material will help ensure more deposited energy and a better reconstructed energy
+					\item CalLeakCorr $>$ 0.25: CalLeakCorr is a correction for the amount of shower leakage out of the CAL.  This is defined for electromagnetic showers and therefore poorly represents the intrinsically wider and more stochastic nature of hadronic showers.  We want to minimize the effect of this variable on the analysis.  
 					\item log10(TkrTree1ThickRLnNodes) $<$ 1.0: To make sure events convert within the beginning of CAL and not last few layers of TKR (don't want to lose energy to TKR) we ensure the last few layers of the TKR do not have too many events  This also helps with backslash and again losing energy back into the TKR
 					\item These cuts ensure the direction and energy are well reconstructed, still need remove contamination source from helium + heavier CRs and electrons
 				\end{myEnumerate}
@@ -202,7 +204,7 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 						\item The path length corrected energy deposited in the ACD in units of MeV
 						\item Signal once again due to ionization of CR interacting with plastic scintillator, therefore AcdPlcEnergy $\propto Z^2$
 					\end{myEnumerate}
-					\item Using these two measures of charge we create of phase-space of Tkr1TotTrAve vs Acd2PLCTkr1TileActDistEnergy 
+					\item Using these two measures of charge we create of phase-space of Tkr1TotTrAve vs  \\Acd2PLCTkr1TileActDistEnergy 
 					\item Designate a polygon in that phase-space around Z$^2$ = 1 using BKG simulation
 					\begin{myEnumerate}
 						\item It should be noted that Geant4 does not accurately recreate the rate of heavy ions interacting with the LAT, it greatly under estimates the event rate
@@ -249,20 +251,135 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\end{myEnumerate}
 				\end{myEnumerate}
 			\end{myEnumerate}
-		\item Energy reconstruction
+		\item Energy Measurement
 			\begin{myEnumerate}
-				\item 
+				\item Using the profile fitter developed for Pass 8 gamma-ray reconstruction we can estimate the energy of the incident proton
+				\begin{myEnumerate}
+					\item The shallow geometry of the CAL mean the shower is not completely contained within CAL and there is significant leakage outside the CAL
+					\item The profile fitter can help mitigate this effect 
+					\item The profile fitter has some large limitations, it was designed for electromagnetic showers
+					\item Therefore it only has one length component instead of the two component profile usually used for hadronic showers
+					\item This translates to the reconstructed energy typically has large energy dependent bias and rather poor energy resolution
+					\item We specifically use CalNewCfpCalEnergy for our reconstructed energy variable.
+					\item This variable uses the CAL direction instead of the TKR direction and does not assume the proton begins showering with in TKR, therefore better accounting for the start of the shower and reconstructing the energy a bit better at energies above 100 GeV
+					\item Still better than using CalEnergyRaw
+				\end{myEnumerate}
+				\item Energy resolution and bias
+				\begin{myEnumerate}
+					\item Because of the limitations of the profile fitter it can be difficult to measure the energy resolution
+					\item To do so we use Proton simulations and find $E_{rec}/E_{true}$
+					\item We fit this distribution with function DEFINE FUCNTION LATER and find the with and bias of the distribution
+					\item Because of the side distribution we cannot simply add missing energy, therefore we need to scale with distribution in order unbias the distribution
+					\item From this unbiased distribution we can find the energy resolution
+					\item Energy resolution tends to increase at as energy increases (not unexpected since at higher energies the shower will leak more and more out of the CAL)
+					\item $68\%$ energy resolution is stable between 100 GeV and 3 TeV at about $\sim 30\%$
+					\item Definitely not the best but purpose of study is extend energy measurement no to have the best energy resolution
+					\item This translates to about 12 energy bins in the final spectrum
+				\end{myEnumerate}
+				\item Minimum Energy
+				\begin{myEnumerate}
+					\item The minimum energy is determined from the HiPass filter
+					\item The HiPass filter begins at CalEnergyRaw $>$ 20 GeV
+					\item Since CalEnergyRaw has such a poor energy resolution (compared to CalNewCfpCalEnergy) this sets up a minimum energy that can be used for the spectral analysis
+					\item The mean of this distribution is 54 GeV.  This means the minimum energy we can reliably expect is 54 GeV
+				\end{myEnumerate}
 			\end{myEnumerate}
 	\end{myEnumerate}
 
 \section{Spectral Analysis}
 	\begin{myEnumerate}
 		\item Instrument Acceptance
+		\begin{myEnumerate}
+			\item Acceptance is defined as the produce to the instrument field of view and the effective area
+			\item It is calculated using the proton MC across the entire desired energy range and angular range in true energy instead of reconstructed energy
+			\begin{equation}
+			\mathscr{A_{eff}}(E) = 4\pi sr \times A_{gen} \times \frac{N_\text{pass}(E)}{N_\text{gen}(E)} 
+			\end{equation}
+			\begin{myEnumerate}
+				\item Effective area is simply calculated by dividing the number of events passing the event selection in each energy bin and the total number of events generated in that energy bin and then multiply by the generation area (typically $6m^2$)
+				\item The energy variable is done in true energy
+			\end{myEnumerate}
+			\item We find acceptance for the optimal event selection and each constant signal scanning efficiency
+			\begin{myEnumerate}
+				\item The optimal event selection has a maximum acceptance of about 0.2 m$^2$ sr
+				\item We ideally want flat acceptance across as most of the energy range as possible
+				\item This is to ensure potential spectral features are not from changes in the acceptance
+				\item Fall of off acceptance above a few TeV is due events not passing selection cut and large saturating effects and small instrument not being able to contain entire shower
+			\end{myEnumerate}
+			\item We use a large enough simulation such that statistical error associated with acceptance is $<1\%$
+		\end{myEnumerate}
 		\item Residual Contamination
+		\begin{myEnumerate}
+			\item Two sources of contamination: Z $>$ 1 CRs and Electrons
+			\item Heavier CR Contamination
+			\begin{myEnumerate}
+				\item Helium is the primary sources in the contamination source
+				\item The rest of the heavier CRs typically have a harder spectrum and are easier to remove than Helium (the $Z^2$ dependence more easily separates higher Z elements)
+				\item To estimate the residual contamination we use BKG simulation and scale the event rates for helium and heavy CRs to flight rates using the template fitter and find an overall correction factors
+				\item We then use those correction factors for helium and heavier CR for event rates after applying the cut (we have to do this because after applying the cut there are not enough event rates to determine the correction factors)
+				\item This results in the helium cut effective reducing the contamination to less than $1\%$ (predominately at $\sim$50 of GeV)
+				\item We know this is not an effect of no events at higher energies from generation because the maximum generation energy for helium is 20 TeV and 50 GeV/amu for other elements (which often is about to 1TeV in total kinetic energy)
+			\end{myEnumerate}
+			\item Electron Contamination
+			\begin{myEnumerate}
+				\item The proton classifier is the main method of reducing electron contamination
+				\item Electron contamination before the applying energy dependent classifier output cuts the electron contamination is estimated at about ~$5\%$
+				\item This is calculated by reweighing the spectrum of dedicated proton and electron simulations to realistic spectra for previous experiments
+				\item We also estimate the live time for the reweighed simulations to create an event rate for each CR species and then find the residual contamination in the proton signal
+				\item The estimated electron contamination after applying the energy dependent proton classifier ranges from less than $1\%$ to down to $1 \times 10^{-2}\%$ of residual contamination
+				\item We also find the contamination for the different scanning efficiencies 
+				\item The highest contamination is at the highest energies where the distinguishing power of the LAT between hadronic and leptonic showers is greatly reduces due the LAT's small size and large size of said particle showers
+				\item This is not really a problem because even with out the proton classifier the electron contamination is still very small
+			\end{myEnumerate}
+		\end{myEnumerate}
 		\item Spectral Reconstruction
+		\begin{myEnumerate}
+			\item There are two methods we use to reconstruct the incident proton cosmic-ray spectrum: Unfolding and Forward Folding
+			\begin{myEnumerate}
+				\item The reason for a folding method is because the reconstructed energy does not completely recreate the true energy as is done with the electron and gamma-ray events
+				\item We must use a response matrix to determine the event rates in true energy from reconstructed energy
+				\item The inversion problem means we have to use one of these methods in order to find the true spectrum
+				\item The two methods are analogous and provide a good check to make sure the folding process is working and everything is understood
+			\end{myEnumerate}
+			\item Unfolding
+			\begin{myEnumerate}
+				\item Using TUnfold an unfolding package based in ROOT
+				\item We use a Thikonov regularization (based on curvature) and minimize the regularization term based on a tau scan (Thikonov is a standard unfolding regularization method)
+				\item Unfolding is nice because it does not require a model for the incident particle spectrum and therefore makes no assumption of the about the incident proton spectrum
+				\item Using a response matrix determine from proton simulations with each of the event selection cuts (a response matrix for each proton classifier cut as well)
+				\item The true energy binning is determined from the energy resolution from the proton simulation with all cuts (except for the proton classier cuts) applied
+				\item The reconstructed energy binning is just set to be larger than the binning of the true energy binning (under sampled case)
+				\item The minimum true energy bin is determine above
+				\item The maximum true energy bin is determine the number of events to ensure low statistical uncertainties
+				\item Data file taken from flight data with each event selection
+				\item The output of the unfolding is the event rate in true energy which is used to compute the differential flux spectrum
+			\end{myEnumerate}
+			\item Forward Folding
+			\begin{myEnumerate}
+				\item Forward folding assumes an input spectral model, takes the acceptances, response matrix, and contamination and creates an event rate in true energy by minimizing differences between reconstructed flight event rates and data flight rate
+				\item Can try different spectral models including power-law and broken power-law
+				\item Determine which model has the lowest $\chi^2_{red}$ and best spectral model
+				\item Unfortunately, have to assume a spectral model
+				\item The true energy binning is determined from the energy resolution from the proton simulation with all cuts (except for the proton classier cuts) applied
+				\item The reconstructed energy binning is just set to be larger than the binning of the true energy binning (under sampled case)
+				\item The minimum true energy bin is determine above
+				\item The maximum true energy bin is determine the number of events to ensure low statistical uncertainties
+				\item Data file taken from flight data with each event selection
+				\item The output of the unfolding is the event rate in true energy which is used to compute the differential flux spectrum
+			\end{myEnumerate}
+			\item Once the event rate is determined from either unfolding and forward folding, we subtract the estimated contamination from the event rate in true energy, divide the by the acceptances, and divide each bin by the bin-width in true energy to get the differential energy dependent flux spectrum
+			\item This is done for the optimized event selection and each scanning efficiency
+			\item The scanning efficiencies are used to probe systematic errors, which is discussed next
+		\end{myEnumerate}
 		\item Systematic Uncertainties
+		\begin{myEnumerate}
+			\item 
+			\item
+		\end{myEnumerate}
 	\end{myEnumerate}
 \section{Results and Discussion}
-
+	\begin{myEnumerate}
+		\item 
+	\end{myEnumerate}
 
 \end{document}
