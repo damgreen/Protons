@@ -84,12 +84,14 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\item X-Y nature and depth of TKR allows for determination of initial direction of cosmic-ray
 					\item Additionally able to measure the time over threshold of CR
 					\item ToT allows for measurement of signal $\propto$ Z$^2$
+					\item The last 4(?) Tungsten converter foils are thicker than the previous layers to ensure gamma-rays convert within TKR
 				\end{myEnumerate}
 				\item CAL information
 				\begin{myEnumerate}
 					\item CAL is homogeneous electromagnetic calorimeter
 					\item Each CAL module is 96 CsI(Tl) crystals in an hodoscopic array in 8 layers.
 					\item The hodoscopic nature of the CAL allows for measuring the shape and evolution of each particle shower which can be used with a profile fitter to determine the incident energy of the cosmic-ray
+					\item additional the imagine capability of the CAL allows for the measurement of the direction of the incident CR
 					\item At normal incidence the CAL is 0.5 $\lambda_i$ lengths deep but at horizontal incidence is it 1.5 $\lambda_i$ deep
 				\end{myEnumerate}
 				\item Anti-coincidence detector (ACD) surrounds the 4$\times$4 tower array
@@ -99,6 +101,7 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\item Each tile independently measures deposited energy from CR
 					\item Deposited energy $\propto$ Z$^2$ 
 				\end{myEnumerate}
+				\item Description of the LAT triggers and filters and point towards the paper with more information
 				\item LAT was not designed for accurate measurement of hadronic showers
 				\begin{myEnumerate}
 					\item Very shallow homogeneous calorimeter not idea for fully capturing energy hadronic shower profile
@@ -112,8 +115,15 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 				\item \textcolor{red}{I'm not 100\% sure of the depth of this section but seeing as though we are using Pass 8 and that was a somewhat critical step into enabling this analysis's possibility I think having a dedicated section in the Event analysis chapter might make sense.  If we put it anywhere it should be rather early before the simulations and after the describing the instrument}
 				\item Pass 8 is the new event reconstruction and simulation software developed by the Fermi LAT collaboration that drastically improves LAT's performance
 				\item New event classification using boosted decision trees in TMVA
+				\begin{myEnumerate}
+					\item Several new Pass 8 variables have been created to determine the quality of the direction, energy, and gamma-ray quality
+				\end{myEnumerate}
 				\item More variables gives better separation between hadronic and leptonic showers in TMVA
 				\item Improved profile to fitting to particle showers improves energy measurement
+				\begin{myEnumerate}
+					\item The New Full Profile fitter is able to extend the longitudinal profile of the shower outside the CAL therefore estimating the amount of energy leakage for high energy events, $>$ 100 GeV
+					\item Two energies derived from new full profile fitter, one for TKR directions and one for CAL directions
+				\end{myEnumerate}
 				\item New tree based TKR reconstruction allows for direction reconstruction at higher angles and larger energies
 				\item New ACD reconstruction provides better particle identification, lowering the contamination of proton sample
 				\item \textcolor{red}{Is there something else I am missing from Pass 8?  There is no Pass 8 paper to reference this so I am not sure how in depth I should go into this discussion.}
@@ -165,7 +175,26 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 
 			\end{myEnumerate}
 		\item Event Selection
+			\begin{myEnumerate}
+				\item Minimum Quality Cuts
+				\begin{myEnumerate}
+					\item We want a selection of hight quality protons for the spectral analysis
+					\item TkrNumTracks $>$ 0: Require an event to have at least one track
+					\item WP8CTPSFTail $>$ 0.5: WP8CTPSFTail is a new Pass 8 TMVA variable which determines the quality of direction reconstruction, this ensures the track is well reconstructed
+					\item CalEnergyRaw $>$ 20 GeV: This utilizes the high pass filter on the LAT.  Any event with a deposited energy greater than 20 GeV is downloaded from the LAT.  This means for events with CalEnergyRaw $>$ 20 GeV is not effected by and lower energy filters which are difficult to understand for protons
+					\item CalTrackAngle $<$ 0.3: Ensure the difference between the CAL and TKR directions is small.
+					\item CalNewCfpSat: Ensure that the variables resulting new full profile fitter are not saturated
+					\item Tkr1LengthInCal $>$ 200.0: Want a long path length through the calorimeter and does not fall within gaps of CAL.  More active material will help ensure more deposited energy and a better reconstructed energy
+					\item log10(TkrTree1ThickRLnNodes) $<$ 1.0: To make sure events convert within the beginning of CAL and not last few layers of TKR (don't want to lose energy to TKR) we ensure the last few layers of the TKR do not have too many events  This also helps with backslash and again losing energy back into the TKR
+					\item These cuts ensure the direction and energy are well reconstructed, still need remove contamination source from helium + heavier CRs and electrons
+				\end{myEnumerate}
+				\item Helium and Heavier Ion Cut
+				\item Proton Classifier
+			\end{myEnumerate}
 		\item Energy reconstruction
+			\begin{myEnumerate}
+				\item 
+			\end{myEnumerate}
 	\end{myEnumerate}
 
 \section{Spectral Analysis}
