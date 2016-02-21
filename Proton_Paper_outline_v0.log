@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 FEB 2016 00:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  21 FEB 2016 12:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -97,40 +97,106 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count97
 ))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen116
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen117
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count98
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count99
+\leftroot@=\count100
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count101
+\DOTSCASE@=\count102
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen118
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count103
+\c@MaxMatrixCols=\count104
+\dotsspace@=\muskip10
+\c@parentequation=\count105
+\dspbrk@lvl=\count106
+\tag@help=\toks18
+\row@=\count107
+\column@=\count108
+\maxfields@=\count109
+\andhelp@=\toks19
+\eqnshift@=\dimen119
+\alignsep@=\dimen120
+\tagshift@=\dimen121
+\tagwidth@=\dimen122
+\totwidth@=\dimen123
+\lineht@=\dimen124
+\@envbody=\toks20
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/bezos/accents.sty
+Package: accents 2006/05/12 v1.3 Math Accent Tools
+\cc@skew=\dimen125
+\cc@wd=\dimen126
+\cc@code=\count110
+\cc@group=\count111
+\cc@skewchar=\count112
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip43
-\enit@outerparindent=\dimen116
-\enit@toks=\toks17
-\enit@inbox=\box27
-\enitdp@description=\count98
+\labelindent=\skip46
+\enit@outerparindent=\dimen127
+\enit@toks=\toks22
+\enit@inbox=\box29
+\enitdp@description=\count113
 )
-\c@myEnumeratei=\count99
-\c@myEnumerateii=\count100
-\c@myEnumerateiii=\count101
-\c@myEnumerateiv=\count102
-\c@myEnumeratev=\count103
-\c@myEnumeratevi=\count104
-\c@myEnumeratevii=\count105
-\c@myEnumerateviii=\count106
-\c@myEnumerateix=\count107
-\enitdp@myEnumerate=\count108
+\c@myEnumeratei=\count114
+\c@myEnumerateii=\count115
+\c@myEnumerateiii=\count116
+\c@myEnumerateiv=\count117
+\c@myEnumeratev=\count118
+\c@myEnumeratevi=\count119
+\c@myEnumeratevii=\count120
+\c@myEnumerateviii=\count121
+\c@myEnumerateix=\count122
+\enitdp@myEnumerate=\count123
 
 (./Proton_Paper_outline_v0.aux)
 \openout1 = `Proton_Paper_outline_v0.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -168,61 +234,59 @@ LaTeX Font Info:    ... okay on input line 21.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
-\scratchdimen=\dimen117
-\scratchbox=\box28
-\nofMPsegments=\count110
-\nofMParguments=\count111
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count112
-\MPscratchDim=\dimen118
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
-\everyMPtoPDFconversion=\toks19
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 26.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 26.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 26.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
- [1
+\scratchcounter=\count124
+\scratchdimen=\dimen128
+\scratchbox=\box30
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen129
+\MPnumerator=\count128
+\makeMPintoPDFobject=\count129
+\everyMPtoPDFconversion=\toks24
+) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 78.
+[2] [3] [4]
+Overfull \hbox (87.69566pt too wide) in paragraph at lines 205--206
+[]\OT1/cmr/m/n/10 Using these two mea-sures of charge we cre-ate of phase-space
+ of Tkr1TotTrAve vs Acd2PLCTkr1TileActDistEnergy 
+ []
 
-[2] [3] [4] [5] (./Proton_Paper_outline_v0.aux) ) 
+[5]
+Overfull \hbox (6.50122pt too wide) in paragraph at lines 237--238
+[]\OT1/cmr/m/n/10 Find en-ergy de-pen-dent cut on pro-ton clas-si-fier out-put 
+which en-sures a pre-de-fined (90$%$,80$%$,
+ []
+
+[6] (./Proton_Paper_outline_v0.aux) ) 
 Here is how much of TeX's memory you used:
- 2149 strings out of 493089
- 30697 string characters out of 6134842
- 102830 words of memory out of 5000000
- 5650 multiletter control sequences out of 15000+600000
- 8800 words of font info for 31 fonts, out of 8000000 for 9000
+ 2791 strings out of 493089
+ 38071 string characters out of 6134842
+ 113879 words of memory out of 5000000
+ 6269 multiletter control sequences out of 15000+600000
+ 10153 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,6n,32p,540b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy7.pfb>
-Output written on Proton_Paper_outline_v0.pdf (5 pages, 151634 bytes).
+ 27i,6n,32p,540b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmss8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy7.pfb>
+Output written on Proton_Paper_outline_v0.pdf (6 pages, 156612 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

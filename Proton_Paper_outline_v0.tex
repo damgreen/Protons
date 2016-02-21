@@ -3,6 +3,7 @@
 \usepackage{outlines}
 \usepackage{lineno}
 \usepackage{color}
+\usepackage{amsmath,accents}
 
 \linenumbers
 \usepackage{enumitem}
@@ -189,7 +190,64 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 					\item These cuts ensure the direction and energy are well reconstructed, still need remove contamination source from helium + heavier CRs and electrons
 				\end{myEnumerate}
 				\item Helium and Heavier Ion Cut
+				\begin{myEnumerate}
+					\item To remove $|Z| > 1$ CRs we use two independent measures of charge in the LAT
+					\item Tkr1TotTrAve
+					\begin{myEnumerate}
+						\item The average time over threshold of signal in TKR
+						\item Signal is ionization of CR interacting with silicon trips, therefore Signal $\propto Z^2$ in units of MIPs
+					\end{myEnumerate}
+					\item Acd2PLCTkr1TileActDistEnergy
+					\begin{myEnumerate}
+						\item The path length corrected energy deposited in the ACD in units of MeV
+						\item Signal once again due to ionization of CR interacting with plastic scintillator, therefore AcdPlcEnergy $\propto Z^2$
+					\end{myEnumerate}
+					\item Using these two measures of charge we create of phase-space of Tkr1TotTrAve vs Acd2PLCTkr1TileActDistEnergy 
+					\item Designate a polygon in that phase-space around Z$^2$ = 1 using BKG simulation
+					\begin{myEnumerate}
+						\item It should be noted that Geant4 does not accurately recreate the rate of heavy ions interacting with the LAT, it greatly under estimates the event rate
+						\item But since ionization is relatively simple and these heavy CRs aren't showering in the ACD or TKR, the amount of ionization energy is fairly accurate
+						\item What this means is we can define the polygon and trust the position of the polygon in flight data
+					\end{myEnumerate}
+					\item We also include an additional cut on Acd2Cal1TriggerEnergy15
+					\begin{myEnumerate}
+						\item Acd2Cal1TriggerEnergy15 is the energy deposited around a $15^{\circ}$ cone from the CAL direction
+						\item The reason for this is a population of large angle heavy CRs priests after the cut, they tend to have a poor TKR direction reconstruction but good CAL direction reconstruction.  We demand the Acd2Cal1TriggerEnergy15 < 30 MeV
+					\end{myEnumerate}
+					\item This greatly reduces the contamination of heavier ions and alphas to under $1\%$ and decreasing at higher energies
+					\item Also since ionization is $\propto Z^2$ we cannot differentiate protons from electrons using this cut
+				\end{myEnumerate}
 				\item Proton Classifier
+				\begin{myEnumerate}
+					\item To remove electrons from the proton sample we develop an event classifier with TMVA using protons as signal and electrons and background
+					\item Since leptonic and hadronic showers are fundamentally different we can use several variables of merit from Pass 8 reconstruction to build a multi-variate analysis and differential protons from electrons
+					\begin{myEnumerate}
+						\item The CALs ability to image showers means we have several variables with trace shower size and evolution (hadronic showers are much wider and longer than leptonic showers)
+						\item Additional variables like centroid position of the shower, and size of the track left in the TKR also are able to distinguish between leptonic and hadronic showers
+					\end{myEnumerate}
+					\item Using simulations previously described with a boosted decision tree with TMVA to train classifier
+					\item Using classifier output we can select on an optimal value for each energy bin and create an energy dependent event selection
+					\begin{myEnumerate}
+						\item This is critical because the proton classifier's ability to distinguish protons from electrons is energy dependent
+						\item Classifier has trouble separating events at high energies (all events look very similar at highest energies since instrument is small compared to size of TeV showers)
+					\end{myEnumerate}
+					\item The optimal value for each energy bin is selected by using the ROC curve (signal efficiency to background rejection) ensuring the derivative of the ROC curve is below a defined tolerance
+					\item We also use several different proton scanning efficiencies
+					\begin{myEnumerate}
+						\item Find energy dependent cut on proton classifier output which ensures a predefined (90$\%$,80$\%$, 70$\%$, etc...) is achieved
+						\item This allows us to probe systematic errors associated with the proton classifier, acceptance, and contamination
+						\item We produce a spectrum for each different scanning efficiency and compare it to the optimized selection
+					\end{myEnumerate}
+					\item We use a template fitter developed by the Fermi-LAT electron analysis to evaluate the data/MC agreement for the variables used in the training the classifier and the output of the classifier
+					\begin{myEnumerate}
+						\item Data/MC agreement is very important
+						\item MC needs to properly recreate data variables in order trust classifier is giving the desired results
+						\item Discrepancies between Data/MC in training variables will translate to systematic errors associated with classifier
+						\item Also dependent on how important the variable is for training the classifier
+						\item Data/MC agreement for classifier output is very good
+						\item Hopefully systematic uncertainties are low
+					\end{myEnumerate}
+				\end{myEnumerate}
 			\end{myEnumerate}
 		\item Energy reconstruction
 			\begin{myEnumerate}
