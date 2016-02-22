@@ -373,8 +373,81 @@ We present a detailed study on the measurement of the cosmic-ray proton spectrum
 		\end{myEnumerate}
 		\item Systematic Uncertainties
 		\begin{myEnumerate}
-			\item 
-			\item
+			\item Acceptance Uncertainties
+			\begin{myEnumerate}
+				\item Systematic Uncertainties in the acceptance are determined from the scanning efficiencies of the proton classifier
+				\item Each proton scanning efficiency will create a different acceptance, different event rate, and different contamination
+				\item  If proton classifier and simulations well represent the data then each spectrum will give similar results
+				\item This is very similar to the bootstrapping method in determining the systematic Uncertainties for gamma-ray data for the LAT
+				\item These Uncertainties are energy dependent and increase as incident energy increases
+				\item They are estimated to be $X\%$ at $\sim$100 GeV and $X\%$ at $\sim$1 TeV \textcolor{red}{I need to figure out how large these actually are compared to the optimized selection}
+			\end{myEnumerate}
+			\item Contamination Uncertainties
+			\begin{myEnumerate}
+				\item Systematic uncertainties associated with the contaminations are expected to be low
+				\item Since the estimated contaminations are low for both the electron and heavy ion contamination we do not expect any systematic Uncertainties to significantly effect the resultant spectrum
+				\item Heavy Ion Uncertainties would have the largest effect since the heavy ion Geant4 simulations are pretty poor but the estimated contamination is still below $1\%$ at the lowest energy
+				\item It would be reasonable to assume the heavy ion contamination at lowest energy is $\sim 1\%$ and there fore negligible compared to other systematic Uncertainties
+				\item Electron contaminations are handled in a similar way to acceptance Uncertainties with the different constant scanning efficiencies from the proton classifier
+			\end{myEnumerate}
+			\item Geant4 Simulation Uncertainties
+			\begin{myEnumerate}
+				\item Geant4 has potential uncertainties in the simulation of protons
+				\item We can determine the quality of simulations by examining accelerator experiments with much more control over their particle sources like CALICE and LHC
+				\begin{myEnumerate}
+					\item Geant4 tends to underestimate both transverse and longitudinal shower development by up to to $\sim 15\%$
+					\item Geant4 uncertainties on relative energy resolutions for protons are considered small
+					\item Absolute energy deposition is under $10\%$
+				\end{myEnumerate}
+				\item Here is are the physics lists that GR's version of Geant4 use specifically for proton simulations \textcolor{red}{This is something I need to look up really soon such that we can have a better understanding what what we are dealing with.  I am sure it is just sitting somewhere in GR but I still have to look for it... sigh...}
+				\begin{myEnumerate}
+					\item  Physics List stuff
+				\end{myEnumerate}
+				\item We can also examine Pass 8 reconstructed beamtest data from 2006.  
+				\begin{myEnumerate}
+					\item Original beamtest data was taken in 2006 with a spare flight towers called the ``Calibration Unit''
+					\item We can compare this beamtest data to simulations and get an idea quality of simulations when looking at energy deposition, shower size, and shower width
+					\item We can also use the BT data to confirm what other accelerator experiments have observed with Geant4 uncertainties
+				\end{myEnumerate}
+			\end{myEnumerate}
+			\item Energy Measurement Uncertainties
+			\begin{myEnumerate}
+				\item To estimate systematic Uncertainties associated with the energy measurement, specifically with energy resolution and abolsute energy scale, there are two ways of doing so
+				\item Geomagnetic Ridigity cutoff
+				\begin{myEnumerate}
+					\item This would entail looking at the geomagnetic rigidity cut off and observing proton event rates as function of McIllwain L parameter
+					\item It would involve using diagnostic data and ray tracing code in order to distinguish trapped protons from cosmic-ray protons
+					\item GRC provides a feature at specific energies that can be used to estimate the absolute energy scale
+					\item UNFORTUNETLY the tracer code is highly dependent on energy resolution as we have seen the energy resolution is pretty poor for protons
+					\item This method seems very involved and has limited probing capability and predominantly works at lower energies
+				\end{myEnumerate}
+				\item Beamtest Data and Simulation
+				\begin{myEnumerate}
+					\item Original beamtest data was taken in 2006 with a spare flight towers called the ``Calibration Unit''
+					\item Several configurations were taken of proton data:
+
+  \begin{tabular}{| c | c | c | c |}
+    \hline
+    Particle & Energy (GeV) & Incident Angle (degrees) & Number of Events \\ \hline
+    Proton & 20 & 0 & 100211 \\ \hline
+    Proton & 100 & 0 & 37183 \\ \hline
+    Proton & 100 & 45 & 28128 \\ \hline
+    Proton & 100 & 90 & 24784 \\ \hline
+    Proton & 150 & 0  & 8958\\ \hline
+  \end{tabular}
+  					\item While not ideal, we can use the data/mc agreement to estimate systematic errors associated with absolute energy scale and energy resolution
+  					\item Preliminary study suggests that there is generally good agreement between Pass 8 Beamtest data and simulations
+  					\item Absolute energy scale for protons agrees within $\pm 5\%$ and relative energy resolution is under $\pm 10\%$
+  					\item Absolute energy scale is more important that relative energy resolution, since the absolute energy scale is a parameter that determines the absolute flux
+				\end{myEnumerate}
+			\end{myEnumerate}
+			\item Spectral Reconstruction Uncertainties
+			\begin{myEnumerate}
+				\item We can explore potential systematic errors in the energy redistribution of event by trying two different methods
+				\item Unfolding and forward folding are two methods to solve the inverse problem
+				\item They should produce the same results and give a nice probe into potential systematics
+				\item \textcolor{red}{I would not expect this to be a large effect, smaller than acceptance or energy measurement but it is something else to check.  I am thinking of a possible way of estimating the effect but it might also be easier to run unfolding and forward folding together and combine the results since we already have code for forward folding established.  If it turns out to be small it is still a nice check to make sure the unfolding processes is working correctly, which it totally should be.}
+			\end{myEnumerate}
 		\end{myEnumerate}
 	\end{myEnumerate}
 \section{Results and Discussion}
